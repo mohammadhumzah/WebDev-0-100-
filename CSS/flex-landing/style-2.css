@@ -1,27 +1,26 @@
- div{
-            border: 1px solid black;
-            padding: 5px
-        }
 
 body {
   margin: 0;
   padding: 0;
 } 
+
+
 .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        background-color: lightskyblue;
-        padding: 5px;
+        background-color:#eef2ff;;
+        padding: 20px;
         margin: auto;
 }
 
 #left {
        display: flex;
        border: 0px;
-       font-size: large;
-       gap: 20px ;
+       font-size: x-large;
+       gap: 25px ;
+       padding-left: 10px;
             
 }
 
@@ -31,15 +30,80 @@ body {
     border: 0px;
     gap: 10px;
     padding-top: 2px;
+
 }
 
 
-button{
+#top-nav{
     display: flex;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: large;
+    font-size: x-large;
     padding: 8px 16px;
     border: 0;
     border-radius: 10px;
     background-color: antiquewhite;
 }
+
+
+.hero{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px;
+    height: 100vh;
+    background-color:#eef2ff;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#hero1{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 90px;
+    line-height: 2;
+    font-size: 3rem;
+    color:#1f2937;
+    text-shadow: 0 0 8px rgba(99,102,241,0.5);
+}
+
+#hero1 .highlight{
+    color: #6366f1;
+    font-size: 3rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+
+#hero2{
+    margin-top: 100px;
+    padding-left: 80px;
+}
+
+
+.foot{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color:#eaeef9;
+}
+
+
+#foot-nav{
+    display: flex;
+    gap: 50px;
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   
+}
+
+
+#bottom-nav{
+    display: flex;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-size:large;
+    border: 0px;
+    border-radius: 6px;
+    background-color:antiquewhite;
+    transform: translateY(-3px);
+}
+
