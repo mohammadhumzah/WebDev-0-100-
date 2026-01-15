@@ -1,42 +1,29 @@
-header{
-    background-color: rgba(237, 22, 237, 0.133);
-    padding: 20px;
- }
- 
- h1 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 40px;
-    color: brown;
-    text-shadow: 0 1px 1px;
-    text-align: center;
- }
-
-body{
-    margin: 0;
-    background-color: azure;
+* {
+    box-sizing: border-box;
 }
 
-#top10{
-    background-color:cadetblue;
-    padding: 3px;
+.parent {
+  list-style: none;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 20px;
+  column-gap: 1px;
+  padding-left: 60px;
+  background-color: #0e1013;
+
 }
 
-#top{
-    justify-content: flex-start;
-}
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-    padding: 0;
-    margin: 10px;
-    list-style: none;
+.last-movie {
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 2;
 }
 
-.child img{
-    height: 400px;
-    width: 300px;
-    object-fit: cover;
+.child img {
+  width: 60%;
+  height: 300px;
 
 }
