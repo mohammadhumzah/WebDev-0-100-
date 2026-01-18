@@ -5,15 +5,12 @@
 // addtwotrays(2,2)
 
 
-function addtwotrays(tray1,tray2){
-           return tray1 + tray2
+// 
+
+
+
+let person = { name: "Ali", age: 20 };
+
+for (let key in person) {
+    console.log(key, person[key]);
 }
-
-console.log(addtwotrays(10,10))
-
-
-function multiplytwo(bars,boxes){
-    return bars * boxes
-}
-
-console.log(`You need ${multiplytwo(10,2)} chocolate bars to fill the boxes.`)
