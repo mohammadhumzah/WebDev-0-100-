@@ -14,17 +14,15 @@
 // }
 
 
-let guests = 5
-let pizzasize
+// 
 
-if (guests<=2){
-    pizzasize = "small"
-}
-else if (guests <= 5){
-    pizzasize = "medium"
-}
-else{
-    pizzasize = "large"
+function checkEvenOdd(num){
+    if(num % 2 === 0){
+        return "Even"
+    }
+    else{
+        return "Odd"
+    }
 }
 
-console.log(pizzasize)
+console.log(checkEvenOdd(10))
