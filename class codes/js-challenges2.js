@@ -62,7 +62,15 @@
     
 // }
 // console.log(max)
- 
+
+let teas = ["nun","lipton","kahwe","green"]
+let max = teas[0]
+for (let tea of teas){
+    if(teas[i].length > max.length){
+        max = tea
+    }
+    }
+console.log(max)
 
 // let arr = [1,3,4,2,1213,15,18,6473,242]
 // let even =[]

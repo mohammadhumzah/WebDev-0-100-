@@ -10,17 +10,26 @@
 // for i in Range(len(myArray)):
 //     total+=myArray[i]
 
-let myArray = [1,4,2,5]
+// let myArray = [1,4,2,5]
 
-function sumfac(nums){
-    let total = 0
-    for (let i=0; i<nums.length; i++){
-       total+=nums[i]
-    }
-    return total
+// function sumfac(nums){
+//     let total = 0
+//     for (let i=0; i<nums.length; i++){
+//        total+=nums[i]
+//     }
+//     return total
+// }
+
+// console.log(sumfac(myArray))
+
+
+
+
+
+teas = ["lipton","nun","kahwe","green"]
+const upcase = []
+
+for (let n of teas){
+    upcase.push(n.toUpperCase())
 }
-
-console.log(sumfac(myArray))
-
-
-
+console.log(upcase)
