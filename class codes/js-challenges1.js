@@ -1,41 +1,41 @@
-// function addtwotrays(tray1,tray2){
-//        console.log(tray1 + tray2)
-// }
+function addtwotrays(tray1,tray2){
+       console.log(tray1 + tray2)
+}
 
-// addtwotrays(2,2)
-
-
-// 
+addtwotrays(2,2)
 
 
 
-// let person = { name: "Ali", age: 20 };
-
-// for (let key in person) {
-//     console.log(key, person[key]);
-// }
 
 
-// function checkResult(marks){
-//     if (marks > 40){
-//         return "Pass"
-//     }
-//     else{
-//         return "Fail"
-//     }
-// }
 
-// console.log(checkResult(13))
+let person = { name: "Ali", age: 20 };
 
-// function findLarger(a,b){
-//     if(a>b){
-//         return a
-//     }
-//     else{
-//         return b
-//     }
-// }
-// console.log(findLarger(3,7))
+for (let key in person) {
+    console.log(key, person[key]);
+}
+
+
+function checkResult(marks){
+    if (marks > 40){
+        return "Pass"
+    }
+    else{
+        return "Fail"
+    }
+}
+
+console.log(checkResult(13))
+
+function findLarger(a,b){
+    if(a>b){
+        return a
+    }
+    else{
+        return b
+    }
+}
+console.log(findLarger(3,7))
 
 
 
