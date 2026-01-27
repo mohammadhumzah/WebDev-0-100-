@@ -1,6 +1,7 @@
 const todoInput = document.getElementById('todo-input')
 const addbtn = document.getElementById('add-btn')
 const todoItemsContainer = document.getElementById('todo-items-container')
+const clearAll = document.getElementById('clear-all')
 
 // Now we are adding listener that when user clicks the button do this function
 
@@ -33,4 +34,15 @@ addbtn.addEventListener('click', () => {
 // Now after taking one input, clear the input box
     todoInput.value = ''
 
+})
+
+clearAll.addEventListener('click', () => {
+    const item = todoItemsContainer.querySelectorAll('li')
+    if(item.length > 0){
+        for(let i of item){
+            i.remove()
+        }
+
+
+    }
 })
