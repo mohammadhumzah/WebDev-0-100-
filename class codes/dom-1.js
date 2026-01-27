@@ -16,9 +16,16 @@ function changeColor(color){
 
 
 const mode = document.getElementById('theme')
-mode.addEventListener('click', () =>{
-
-    console.log(document.body.style.backgroundColor)
-
+mode.addEventListener('click', () => {
+    
+    const currentColor = document.body.style.backgroundColor
+    if(!currentColor || currentColor == 'white'){
+        changeColor('black')
+        mode.innerText = 'Light Mode'
+    }
+    else{
+        changeColor('white')
+        mode.innerText = 'Dark Mode'
+    }
 })
 
