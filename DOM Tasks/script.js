@@ -2,6 +2,7 @@ const todoInput = document.getElementById('todo-input')
 const addbtn = document.getElementById('add-btn')
 const todoItemsContainer = document.getElementById('todo-items-container')
 const clearAll = document.getElementById('clear-all')
+const newsLetter = document.getElementById('newsletter')
 
 // Now we are adding listener that when user clicks the button do this function
 
@@ -36,13 +37,17 @@ addbtn.addEventListener('click', () => {
 
 })
 
+// Use loop to go through each list tag
 clearAll.addEventListener('click', () => {
     const item = todoItemsContainer.querySelectorAll('li')
-    if(item.length > 0){
+    if (item.length > 0) {
         for(let i of item){
             i.remove()
         }
-
-
     }
+})
+
+newsLetter.addEventListener('click', () => {
+   const email = newsLetter.value
+   console.log(email)
 })

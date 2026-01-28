@@ -15,7 +15,9 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 60px;
+    padding-top: 60px;
+    background-color: #fdf6f0;
+    min-height: 300px;
 
 }
 
@@ -42,7 +44,7 @@ h1{
 
 #clear-all:hover{
     cursor: pointer;
-    background-color: lightgray;
+    background-color: rgb(210, 199, 199);
 }
 
 #todo-items-container{
@@ -60,3 +62,25 @@ h1{
     margin-left: 20px;
 }
 
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20%;
+}
+
+footer #newsletter {
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer button{
+    padding: 6px 12px;
+}
+
+footer button:hover{
+    cursor: pointer;
+    background-color: beige;
+}
