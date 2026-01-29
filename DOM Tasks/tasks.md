@@ -9,3 +9,4 @@
 - On clicking delete remove from list
 - A clear all button that clears all tasks
 - A subscribe button that takes email id from user
+- Implement the dark mode functionality

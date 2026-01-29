@@ -51,3 +51,5 @@ newsLetter.addEventListener('click', () => {
    const email = newsLetter.value
    console.log(email)
 })
+
+// Adding dark mode button
