@@ -1,8 +1,28 @@
+const darkMode = document.getElementById('dark-mode')
 const todoInput = document.getElementById('todo-input')
 const addbtn = document.getElementById('add-btn')
 const todoItemsContainer = document.getElementById('todo-items-container')
 const clearAll = document.getElementById('clear-all')
 const newsLetter = document.getElementById('newsletter')
+
+
+// Adding dark mode button
+
+darkMode.addEventListener('click', () => {
+    
+   
+    const currentColor = document.body.style.backgroundColor
+
+    if(!currentColor || currentColor == 'white'){
+        document.body.style.backgroundColor = 'black'
+        darkMode.innerText = 'Light Mode'}
+    else{
+        document.body.style.backgroundColor = 'white'
+        darkMode.innerText = 'Dark Mode'
+    }
+
+    })
+
 
 // Now we are adding listener that when user clicks the button do this function
 
@@ -52,4 +72,3 @@ newsLetter.addEventListener('click', () => {
    console.log(email)
 })
 
-// Adding dark mode button
