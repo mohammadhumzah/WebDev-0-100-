@@ -1,0 +1,49 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    text-align: center;
+    padding: 40px;
+}
+
+main{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.screen{
+    border: 2px solid;
+    border-radius: 8px;
+    width: 450px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.keypad{
+            border: 2px solid;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(4,90px);
+            grid-template-rows: auto;
+            grid-gap: 10px;
+            padding: 20px 20px;
+            width: 450px;
+            height: 400px;
+            margin: 0 auto;
+            margin-top: 10px;
+        
+        }
+
+.multiply {
+    font-size: large;
+}
+
+.plus {
+    font-size: larger;
+}
+
+.minus{
+    font-size: larger;
+}
