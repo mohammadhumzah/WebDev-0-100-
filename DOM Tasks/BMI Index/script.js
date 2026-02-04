@@ -8,7 +8,11 @@ submissionButton.addEventListener('click', () => {
     const valueWeight = Number(weightSubmit.value) // Number used coz input field takes numbers as strings to be converted
     const valueHeight = Number(heightSubmit.value) / 100   // Convert cm to meters
     const bmi = (valueWeight / valueHeight ** 2) 
-
+    
+    if(valueWeight === 0 || valueHeight === 0){
+        finalResult.innerText = 'Please enter both height and weight'
+        return
+    }
     if( bmi >= 0 && bmi < 16){
         finalResult.innerText = `Underweight - Your BMI is ${bmi.toFixed(2)}`
     }
