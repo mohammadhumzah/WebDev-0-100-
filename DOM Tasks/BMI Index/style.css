@@ -7,10 +7,10 @@
 header {
     text-align: center;
     padding: 60px 20px;
-    background-color: #bd958a;
+    background-color: #dfcbc4;
     border-bottom: 2px solid #c36464;
     text-shadow: 1px 1px 0 #ccc, 2px 2px 0 #999;
-    color:#3d2314;
+    color:#2d1810;
 }
 
 main{
@@ -29,7 +29,7 @@ main{
     border: 3px solid #c36464;
     border-radius: 10px;
     width: 300px;
-    height: 360px;
+    height: 400px;
     background-color: #ccc;
 }
 
@@ -58,6 +58,14 @@ button:hover{
     cursor: pointer;
     background-color: lightgray
 
+}
+
+#results {
+    font-size: 18px;
+    font-weight: bold;
+    color: #c36464;
+    text-align: center;
+    margin-top: 10px;
 }
 
 article{
