@@ -1,28 +1,50 @@
 * {
     padding: 0;
     box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    background: #98c7c2;
 }
 
 header{
     text-align: center;
     padding: 40px;
+    border-bottom: 1px solid brown;
+    background-color: #a65d4e;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 main{
     margin: 0 auto;
     text-align: center;
+    padding: 60px;
 }
 
 .screen{
-    border: 2px solid;
+    border: 4px solid;
     border-radius: 8px;
     width: 450px;
     margin: 0 auto;
     padding: 40px;
+    background: #14b8a6;
 }
 
+.screen input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    text-align: right;
+    padding: 10px;
+    background: transparent;
+}
+
+
+
 .keypad{
-            border: 2px solid;
+            border: 4px solid;
             border-radius: 8px;
             display: grid;
             grid-template-columns: repeat(4,90px);
@@ -33,8 +55,19 @@ main{
             height: 400px;
             margin: 0 auto;
             margin-top: 10px;
+             background: #14b8a6;
         
         }
+
+.child{
+    border: 2px solid;
+    border-radius: 16px;
+    font-size: large;
+}
+
+.child:hover {
+    background: #f0f0f0;
+}
 
 .multiply {
     font-size: large;

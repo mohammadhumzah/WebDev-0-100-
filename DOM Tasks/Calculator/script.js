@@ -1,8 +1,9 @@
 // Create var and find the keypad and screen element with help of query selector
 const keypad = document.querySelector('.keypad')
 const screen = document.querySelector('.screen input')
+const clear = document.querySelector('.clear')
 
-keypad.addEventListener('click', (even) => {
+keypad.addEventListener ('click', (even) => {
 
     // Check if button was clicked or not
     if(even.target.tagName === 'BUTTON'){
@@ -22,4 +23,8 @@ keypad.addEventListener('click', (even) => {
             screen.value = eval(screen.value)
         }
     }
+})
+
+clear.addEventListener('click', () =>{
+    screen.value = '' 
 })
