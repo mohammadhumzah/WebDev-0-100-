@@ -6,7 +6,7 @@ const finalResult = document.getElementById('results')
 submissionButton.addEventListener('click', () => {
 
     const valueWeight = Number(weightSubmit.value)          // Number is used because input field takes numbers as strings to be converted
-    const valueHeight = Number(heightSubmit.value) / 100  // Convert cm to meters
+    const valueHeight = Number(heightSubmit.value) / 100   // Convert cm to meters
     const bmi = (valueWeight / valueHeight ** 2) 
 
     if( bmi >= 0 && bmi < 16){
