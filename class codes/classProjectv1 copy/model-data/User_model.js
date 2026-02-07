@@ -1,4 +1,5 @@
-import mongoose from "mongoose";    
+import mongoose from "mongoose";  
+import bcrypt from "bcryptjs";    
 
 // Defining schema of db
 const userSchema = new mongoose.Schema({
@@ -25,6 +26,14 @@ const userSchema = new mongoose.Schema({
     }
 }, {
     timestamps: true,
+})
+
+// Hook for password hashing
+userSchema.pre("save", async function(){            // dont use arrow fxns
+
+    if(this.isModified("password")){
+        this.password = await bcrypt.hash(this.password, 10)
+    }    
 })
 
 
