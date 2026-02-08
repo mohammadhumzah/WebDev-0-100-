@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import db from "./utils/db.js"
+import cookieParser from "cookie-parser"
 
 //Importing all routes
 
@@ -18,6 +19,8 @@ app.use(cors({
     allowedHeaders: ['Content-Type'],
     methods: ['GET', 'POST']
 }))
+
+app.use(cookieParser())   // for accessing user cookies after he logged in
 
 
 // Connect app to db
