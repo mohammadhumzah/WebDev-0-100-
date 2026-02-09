@@ -3,7 +3,7 @@ import crypto from "crypto"
 import nodemailer from "nodemailer"
 import bcrypt from "bcryptjs"  
 import jwt from "jsonwebtoken" 
-import dotenv from "dotenv"
+import dotenv from "dotenv" 
 
 
 
@@ -59,7 +59,7 @@ const registerUser = async (request, response) => {
                         user: process.env.MAILTRAP_USERNAME,
                         pass: process.env.MAILTRAP_PASSWORD,
                     },
-                    });
+                });
                 const mailOption = {
                     from: process.env.MAILTRAP_SENDERMAIL ,
                     to: user.email,
@@ -85,7 +85,6 @@ const registerUser = async (request, response) => {
         } 
             
     }
-
 
 const verifyUser = async(request, response) => {
     // get token from url that we sent the user through mail and he clicked
@@ -117,7 +116,6 @@ const verifyUser = async(request, response) => {
         message: "All done"
     });
 }
-
 
 const login = async(request, response) => {
 
@@ -157,7 +155,7 @@ const login = async(request, response) => {
             secure: true
         }
 
-            response.cookie("token",token, cookieOptions )   // set session token into user cookies
+        response.cookie("token",token, cookieOptions )   // set session token into user cookies
         response.status(200).json({
             success: true,
             message: "Login Successful"
@@ -193,6 +191,7 @@ const getMe = async(request,response) => {
         });
     }
 }
+
 const logoutUser = async(request,response) => {
     const cookieOptions = {
         httpOnly : true,        // user wont be able to mess with this
@@ -211,32 +210,103 @@ const logoutUser = async(request,response) => {
         });
     }
 }
+
 const forgotPassword = async(request,response) => {
     try {
-        //get email from req.body
-        
-        //find user based on email from db
+        // get email from req.body
+        const { email } = request.body;
+        if (!email) {
+            return response.status(400).json({
+                message: "Enter your email"
+            });
+        }
 
-        // if user found then resettoken+resetexpiry from .env using Date.now()+10*60*1000
-        
-        // save user in db
+        // find user based on email from db
+        const user = await User.findOne({ email });
+        if (!user) {
+            return response.status(400).json({
+                message: "Invalid email"
+            });
+        }
 
-        //generate token using crypto
+        // generate token using crypto
+        const resetToken = crypto.randomBytes(32).toString('hex');
+        user.resetPasswordToken = resetToken;
+        user.resetPasswordexpiry = Date.now() + 10 * 60 * 1000; // 10 minutes expiry
+        await user.save();
 
-        // send email to user with token
-        
+        // send email to user with token using nodemailer
+        const transporter = nodemailer.createTransport({
+            host: process.env.MAILTRAP_HOST,
+            port: process.env.MAILTRAP_PORT,
+            secure: false, // Use true for port 465, false for port 587
+            auth: {
+                user: process.env.MAILTRAP_USERNAME,
+                pass: process.env.MAILTRAP_PASSWORD,
+            },
+        });
+        const mailOptions = {
+            from: process.env.MAILTRAP_SENDERMAIL ,
+            to: user.email,
+            subject: "Recover Password",
+            text: `please click on the link:
+            ${process.env.BASE_URL}/api/v1/users/forgot/${resetToken}`
+        };
+
+        await transporter.sendMail(mailOptions);
+
+        return response.status(200).json({
+            message: "Password reset email sent",
+            success: true
+        });
     } catch (error) {
-        
+        console.log(error);
+        return response.status(500).json({
+            message: "Could not send reset email",
+            success: false
+        });
     }
 }
+
 const resetPassword = async(request,response) => {
     try {
         // collect token from params
+        const {resetToken} = request.params
         // password from req.body
-        //
+        const {password} = request.body
         
-    } catch (error) {
+        try {
+            const user = await User.findOne({
+                resetPasswordToken: resetToken,
+                resetPasswordexpiry: {$gt: Date.now()}
+
+            })
+
+            
+               
+
+            user.password = password
+            user.resetPasswordToken = undefined
+            user.resetPasswordexpiry = undefined
+            await user.save()
+
+            return response.status(200).json({
+                    message: "Password reset Successfully"
+            });
+            }
+
+
+           catch (error) { 
+            return response.status(400).json({
+            message: "No user found"
+            });
+            }
         
+    } 
+    catch (error) {
+        return response.status(400).json({
+        message: "Couldnt reset password"
+            });
     }
 }
 
