@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+#sir {
+     text-align: center;
+     padding: 20px 30px;
+
+}
+
+
+.detail{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+    width: 300px;
+    height: 200px;
+}
+
+label {
+  font-size: 1.4rem;
+  font-family: "Pixelify Sans", sans-serif;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+input[type="text"] {
+  font-size: small ;
+  padding: 16px 18px;
+  width: 200px;
+  background-color: #f5f0e1;
+  border: 3px solid #5c6b4d;
+  border-radius: 8px;
+  color: #2c3e50;
+  outline: none;
+}
+
+.message{
+     display: none; /* Hidden initially */
+     position: fixed;
+     inset: 0;
+     justify-content: center;
+     align-items: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#submission {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 10px;
+    border: 2px solid #ff4d4d;
+    border-radius: 8px;
+    background: #fff0f0;
+    color: #d32f2f;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+    transition: transform 0.1s, box-shadow 0.1s;
+    user-select: none;
+    min-width: 120px;
+}
+
+#submission:hover {
+    background-color: #ff4d4d;
+    color: white;
+}
