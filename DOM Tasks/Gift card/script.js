@@ -27,18 +27,24 @@ const messages = [
 ];
 
 submissionButton.addEventListener('click', () => {
-    
-    detailing.style.display = "none"
-    detailButtons.style.display = "none"
+
     const naam_e_wafa = yourName.value.trim()
     if (naam_e_wafa === ""){
         return
     }
+    
+    detailing.style.display = "none"
+    detailButtons.style.display = "none"
+
+    setTimeout( () => {
+        myMessageBox.classList.add("open")
+    },10)
+   
 
     const randomIndex = Math.floor(Math.random() * messages.length);
     const randomMessage = messages[randomIndex];
     myMessage.textContent = `Dear ${naam_e_wafa}, ${randomMessage}`
-    myMessageBox.style.display = "flex"
+    document.body.classList.add("blur-bg");
 
    
 })
