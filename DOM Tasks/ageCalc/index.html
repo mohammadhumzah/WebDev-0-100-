@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/js-datepicker/dist/datepicker.min.css">
+    <title>Your Age Calculator</title>
+</head>
+<body>
+
+    <div class="sir">
+        <h1>Age Calculator</h1>
+    </div>
+
+    <div class="details">
+        <form name="ageForm" target="_self" id="detailForm">
+        <label for="age">Enter Your Age</label>
+        <input type="text"  id="age">
+        <button id="calculate">Calculate Age</button>
+        <span id="result" class="result"></span>
+        </form>
+    </div>
+
+    <script src="https://unpkg.com/js-datepicker"></script> 
+    <script type="module" src="script.js" defer></script>
+    
+</body>
+</html>

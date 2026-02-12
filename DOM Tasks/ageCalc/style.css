@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(thomas-lefebvre-mT1uxKaegSQ-unsplash.jpg);
+}
+
+.sir {
+    text-align: center;
+    padding: 14px 10px;
+    color: #f3f3f3;
+    background: rgba(30, 32, 38, 0.45);
+    border-radius: 7px;
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 1.5px 6px rgba(30,30,30,0.10);
+    font-size: 1.2rem;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 18px auto 14px auto;
+    max-width: 420px;
+    letter-spacing: 0.2px;
+    transform: none;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+#detailForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 80px;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 30px 40px;
+    width: 40vh;
+    height: 40vh;
+    box-shadow: 0 0 15px brown;
+}
+
+button {
+    font-size: medium;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 8px;
+    border: 1px solid gray;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: lightgray
+
+}
+
+label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+input:focus {
+    border-color: brown;
+    box-shadow: 0 0 5px rgba(165, 42, 42, 0.4);
+}
+
