@@ -3,13 +3,13 @@ const keypad = document.querySelector('.keypad')
 const screen = document.querySelector('.screen input')
 const clear = document.querySelector('.clear')
 
-keypad.addEventListener ('click', (even) => {
+keypad.addEventListener ('click', (event) => {
 
     // Check if button was clicked or not
-    if(even.target.tagName === 'BUTTON'){
+    if(event.target.tagName === 'BUTTON'){
         // Use .target to know which exact element triggered event, .dataset.type to get custom dataset of triggerer
-        const buttonType = even.target.dataset.type
-        let buttonValue = even.target.textContent
+        const buttonType = event.target.dataset.type
+        let buttonValue = event.target.textContent
 
         if(buttonValue === '✖️'){
             buttonValue = '*'
