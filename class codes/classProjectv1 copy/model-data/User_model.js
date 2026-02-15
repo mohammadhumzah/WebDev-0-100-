@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
 })
 
 // Hook for password hashing
-userSchema.pre("save", async function(){            // dont use arrow fxns
+userSchema.pre("save", async function() {            // dont use arrow fxns
 
     if(this.isModified("password")){
         this.password = await bcrypt.hash(this.password, 10)

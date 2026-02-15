@@ -172,6 +172,7 @@ const login = async(request, response) => {
 }
 
 const getMe = async(request,response) => {
+    
     try {
         const user = await User.findById(request.user.id).select('-password');
         console.log(user);
