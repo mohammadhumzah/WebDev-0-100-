@@ -98,13 +98,15 @@ button.outline:hover {
 	box-shadow: 0 12px 32px rgba(44,62,80,0.18);
 }
 #card-message {
-	font-size: 1.5rem;
-	font-weight: 600;
+	font-size: 1.6rem;
+	font-family: 'Montserrat', 'Segoe UI', 'Roboto', Arial, sans-serif;
+	font-weight: 700;
 	color: #2d3a4a;
 	margin: 0;
 	text-align: center;
-	letter-spacing: 0.5px;
+	letter-spacing: 1px;
 	padding-bottom: 0.5rem;
+	text-shadow: 0 2px 8px rgba(172, 182, 229, 0.3);
 }
 
 @media (max-width: 600px) {

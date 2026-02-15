@@ -21,7 +21,7 @@ getBtn.addEventListener ('click', async () => {
 
         const temp = data.main.temp
         const feelsLike = data.main.feels_like
-        message.innerText = `The Temperature today is ${temp} °C but it feels like ${feelsLike} °C `
+        message.innerText = `The Temperature today in ${cityName} is ${temp} °C but it feels like ${feelsLike} °C `
 
         
     } catch (error) {
@@ -57,10 +57,11 @@ detectLocation.addEventListener ('click', async () => {
 
                 const temp = data.main.temp;
                 const feelsLike = data.main.feels_like;
-                message.innerText = `The Temperature today is ${temp} °C but it feels like ${feelsLike} °C `;
+                const city = data.name;
+                    message.innerText = `In ${city}, the temperature today is ${temp} °C but it feels like ${feelsLike} °C.`;
             } catch (error) {
                 console.error(error);
-                alert('Couldnt get that');
+                alert('Please Retry');
             }
         }, function(error) {
             alert('Enable Location');
