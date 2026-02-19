@@ -60,7 +60,7 @@ setTimeoutPromisified().then(main)
 
 // Another way of writing it with help of arrow function:
 
-function setTimeoutPromisified(){
+function setTimeoutPromisified(time){
     return new Promise((resolve) => {
         setTimeout(resolve,time)
     })
