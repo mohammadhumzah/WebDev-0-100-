@@ -1,30 +1,30 @@
 // Polyfill .forEach function
-// const arr = [1,2,3,4,5]
+const arr = [1,2,3,4,5]
 
-// if (!Array.prototype.forEach) {
-//     Array.prototype.forEach = function(userfn) {
+if (!Array.prototype.forEach) {
+    Array.prototype.forEach = function(userfn) {
 
-//         for(let i = 0; i < this.length; i++){
-//             userfn(this[i], i)
-//         }
-//     }
-// }
+        for(let i = 0; i < this.length; i++){
+            userfn(this[i], i)
+        }
+    }
+}
 
 // Polyfill for .map
 
-// if (! Array.prototype.map){
-//     Array.prototype.map = function(userfn){
+if (! Array.prototype.map){
+    Array.prototype.map = function(userfn){
 
-//         const newArray = []
-//         for (let i = 0; i < this.length; i++){
+        const newArray = []
+        for (let i = 0; i < this.length; i++){
 
-//             value = userfn(this[i],i)
-//             newArray.push[value]
+            value = userfn(this[i],i)
+            newArray.push[value]
              
-//         }
-//         return newArray
-//     }
-// }
+        }
+        return newArray
+    }
+}
 
 // Polyfill for .filter
 
@@ -46,3 +46,16 @@ if (!Array.prototype.myFilter){
 arr = [1,2,3,4,5,6]
 const nums = arr.myFilter(n => n %2 === 0)
 console.log(nums)
+
+// Method Overloading + Run time
+
+function game (players){
+    console.log("hey")
+}
+
+game()
+
+function game (){
+    console.log("hi")
+}
+game()

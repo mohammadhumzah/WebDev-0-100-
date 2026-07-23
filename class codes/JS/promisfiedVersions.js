@@ -14,7 +14,6 @@ setTimeoutPromisified(3000).then(function main() {
 
 // Fileread Promisified
 
-const { error } = require('console')
 const fs = require ('fs')
 const { url } = require('inspector')
 
@@ -33,7 +32,11 @@ function readTheFileAsync(){
    })
 }
 
-readTheFileAsync('a.txt').then((data) => console.log(data)).catch((error) => console.log(error))
+function callback(data) {
+    console.log(data)
+}
+
+readTheFileAsync('a.txt').then(callback).catch((error) => console.log(error))
 
 // Fetch Promisified
 

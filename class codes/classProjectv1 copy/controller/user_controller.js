@@ -13,7 +13,7 @@ const registerUser = async (request, response) => {
         const {name, email, password} = request.body || {}
     
         //validate
-        if(!name || !email || !password){
+        if(!name || !email || !password) {
             return response.status(400).json({
                 message: "All fields are required"
             })

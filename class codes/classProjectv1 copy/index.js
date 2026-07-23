@@ -10,7 +10,7 @@ import userRoutes from "./routes/user_routes.js"  //used default keyword so was 
 
 
 const app = express()
-const port = process.env.PORT || 4000  //.env m likha huwa port use krlo agar available ni to 3000 krlo
+const port = process.env.PORT || 4000  //.env m likha huwa port use krlo agar available ni to 4000 krlo
 
 app.use(express.json())  // request.body ko JSON se padhne ke liye zaroori hai
 

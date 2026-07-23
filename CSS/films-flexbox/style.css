@@ -104,7 +104,7 @@ article:has(.parent) {
 .child {
     background-color: #ffffff;
     border-radius: 8px;
-    overflow: hidden;
+    overflow:visible;
     border: 2px solid #e8d5c4;
 }
 
@@ -117,6 +117,7 @@ article:has(.parent) {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: cover;
 }
 
 /* Links inside cards */

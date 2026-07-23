@@ -31,6 +31,8 @@ btn.addEventListener("click", (e) => {
 
       const {years, months, days, hours} = today.diff(dt, ["years", "months", "days", "hours"]).toObject()
       
+      console.log({years,months,days,hours})
+      
       finalResult.innerText = `Your age is ${Math.floor(years)} Years, ${Math.floor(months)} Months, ${Math.floor(days)} Days, ${Math.floor(hours)} Hours`
 
 });
