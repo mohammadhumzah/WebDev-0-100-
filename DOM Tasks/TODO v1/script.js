@@ -18,7 +18,7 @@ darkMode.addEventListener('click', () => {
         darkMode.innerText = 'Light Mode'}
     else{
         document.body.style.backgroundColor = 'white'
-        darkMode.innerText = 'Dark Mode'
+        darkMode.innerText = 'Dark Mode'T
     }
 
     })
