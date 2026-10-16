@@ -1,5 +1,6 @@
 const board = document.getElementById('board')
 const currStat = document.getElementById('status')
+const resetButt = document.getElementById('resetBtn')
 
 let grid = ["","","","","","","","",""]
 let turn = 'X'
@@ -35,6 +36,7 @@ board.addEventListener('click', (e) => {
     
 
     const box = e.target
+    console.log(box)
     box.textContent = turn
 
     const index = box.id
@@ -66,3 +68,29 @@ board.addEventListener('click', (e) => {
     currStat.textContent = `Player ${turn}'s Turn`
     
 })
+
+resetButt.addEventListener('click', () => {
+    
+    const boxes = board.querySelectorAll('button')
+
+    for(let i = 0; i < boxes.length; i++){
+        boxes[i].textContent = ""
+    }
+
+    currStat.textContent = "Player X's turn"
+    grid = ["","","","","","","","",""]
+    winnerDecided = false
+    totalInsert = 0
+
+
+})
+
+// another implementation of resetButt using foreach
+
+// resetButt.addEventListener('click', (e) => {
+//     board.querySelectorAll('button').forEach(
+//         (boxes) => {
+//             boxes.textContent = ""
+//         }
+//     )
+// })
