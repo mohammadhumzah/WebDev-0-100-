@@ -16,7 +16,7 @@ getBtn.addEventListener ('click', async () => {
     try {
 
         const response = await fetch(`/.netlify/functions/weather?city=${cityName}`)
-        const data = await response.json()      // Converts strings obj {"temp" : "8"} from weather.js back into js object 
+        const data = await response.json()      // Converts strings obj "{"temp" : 8}"" from weather.js back into js object 
         console.log(data)
 
         const temp = data.main.temp
