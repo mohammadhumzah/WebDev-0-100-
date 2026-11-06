@@ -72,6 +72,10 @@ app.delete('/delete/:id', (req,res) => {
     res.status(200).json({message: 'todo successfully deleted'})
 })
 
+app.use((req,res) => {
+    res.status(404).json({error: 'this route doesnt exist'})
+})
+
 app.listen(3000, () => {
     console.log('App running at port http://localhost:3000')
 })
