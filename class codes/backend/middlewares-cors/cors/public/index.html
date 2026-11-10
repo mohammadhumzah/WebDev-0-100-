@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Calculator</title>
+</head>
+<body>
+    <input type="number" id="a" placeholder="First value">
+    <input type="number" id="b" placeholder="Second value">
+
+    <button id="sum">Add</button>
+
+    <script>
+        const sumButton = document.getElementById('sum')
+
+sumButton.addEventListener('click', async () => {
+    const a = Number(document.getElementById('a').value)
+    const b = Number(document.getElementById('b').value)
+
+    const response = await fetch('http://localhost:3000/sum', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ a, b })
+    })
+
+    const data = await response.json()
+
+    alert(`Answer: ${data.answer}`)
+})
+    </script>
+</body>
+</html>
