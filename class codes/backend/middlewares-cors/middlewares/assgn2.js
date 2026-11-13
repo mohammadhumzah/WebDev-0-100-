@@ -12,7 +12,7 @@ app.get('/totalreq', (req,res)=>{
 
 
 app.use(function isMiddleware(req,res,next) {
-    const num = requestCounter + 1
+    const num = requestCounter+=1                   // requestCounter = requestCounter + 1 then change console.log(requestCounter)
     console.log(`Total requests sent are ${num}`)
     next()
 })
