@@ -34,7 +34,16 @@ app.post('/todos', (req,res) => {
 })
 
 
-app.delete('/todos/delete/:id', (req,res) => {
+app.delete('/todos/:id', (req,res) => {
+    const id = req.params.id
+    const index = todos.findIndex(i => i.id === id)
+
+    if(index === -1){
+        return res.status(404).json({error: 'couldnt find that todo'})
+    }
+
+    todos.splice(index,1)
+    res.status(200).json({message: 'deleted successfully'})
 
 })
 
