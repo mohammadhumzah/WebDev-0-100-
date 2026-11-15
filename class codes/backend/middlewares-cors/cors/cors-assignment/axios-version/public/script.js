@@ -6,11 +6,20 @@ const adder = document.getElementById('bttn')
 adder.addEventListener('click', async () => {
     const a = Number(first.value)
     const b = Number(second.value)
+    try {
+         const response = await axios.post('http://localhost:3001/sum',{ a, b })     
+         console.log(response)
 
-    const response = await axios.post('http://localhost:3001/sum',{ a, b })     // Axios jsonifies outgoing post req body and then also parses and reads incoming data so no need of data = response.json(), it does this internally and create data object with actual data ready to be read.
+         alert(`Answer: ${response.data.answer}`)
+    } 
+    
+    catch (error) {
+          console.log(error.response?.status);
+          console.log(error.response?.data);
+
+          alert("Request failed");
+    }
    
-    console.log(response)
-    alert(`Answer: ${response.data.answer}`)
 
 })
 

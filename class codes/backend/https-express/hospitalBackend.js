@@ -126,7 +126,7 @@ app.put("/:id/kidneys/:n", function(req,res){
 
 // to delete a user and his all info based on id
 app.delete('/:id', function(req,res){
-    const id = Number(req.params)
+    const id = Number(req.params.id)
     const index = users.findIndex(u => u.id === id)
 
     if (index === -1) {
