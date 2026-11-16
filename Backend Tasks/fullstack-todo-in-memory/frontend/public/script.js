@@ -9,11 +9,23 @@ const delAll = document.getElementById('delete-all')
 
 function addTODOToDom(wholeTodo){
     const li = document.createElement('li')
-    li.textContent = wholeTodo.description
+    const text = document.createElement('span')
+    text.textContent = wholeTodo.description
 
+    if(wholeTodo.completed){text.classList.add('done')}
+
+    text.addEventListener('click', async()=>{
+        const newState = !text.classList.contains('done')
+
+        const response = await axios.patch(`http://localhost:3000/todos/${wholeTodo.id}`, {completed: newState})
+        text.classList.toggle('done', response.data.completed)
+
+    })
+
+    
     const delbutton = document.createElement('button')
     delbutton.innerText = 'x'
-    li.appendChild(delbutton)
+    li.append(text,delbutton)
 
     delbutton.addEventListener('click', async () => {
 
@@ -31,7 +43,7 @@ function addTODOToDom(wholeTodo){
     todoItemsContainer.appendChild(li)
 }
 
-
+// function to display all the existing todos
 async function getAlltodos(){
     const response = await axios.get('http://localhost:3000/')
     
@@ -41,7 +53,7 @@ async function getAlltodos(){
 
 }
 
-
+// function to display a newly added todo
 addBttn.addEventListener('click', async () => {
 
     const value = inputVal.value 
@@ -56,7 +68,7 @@ addBttn.addEventListener('click', async () => {
     
 })
 
-
+// function to show the result of the searched todo
 searchBttn.addEventListener('click', async() => {
     const q = searchInput.value.trim()
     const response = await axios.get('http://localhost:3000/todos/search', {params: {q}})     // params: val builds the query string
@@ -67,14 +79,7 @@ searchBttn.addEventListener('click', async() => {
 
 })
 
-
-async function updateTodo(wholeTodo){
-
-    const response = await axios.put(`http://localhost:3000/todos/${wholeTodo.id}`,{description: 'Buy milk'})
-    alert(`${response.data.message}`)
-}
-
-
+// function to delete all the todos
 delAll.addEventListener('click', async() => {
 
     const response = await axios.delete('http://localhost:3000/todos')
@@ -89,6 +94,7 @@ delAll.addEventListener('click', async() => {
     }, 1000)
 
 })
+
 
 getAlltodos()
 
