@@ -1,1 +1,90 @@
-.done { text-decoration: line-through; }
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f4e7c5;
+    color: #2d241c;
+    font-family: "Courier New", monospace;
+}
+
+header {
+    padding: 2rem 1rem 1rem;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    color: #8f2d2d;
+    font-size: 2rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.container {
+    width: min(90%, 640px);
+    margin: 1rem auto;
+    padding: 1.5rem;
+    background: #fff8df;
+    border: 3px solid #2d241c;
+    box-shadow: 8px 8px 0 #c58b57;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+input,
+button {
+    padding: 0.7rem;
+    border: 2px solid #2d241c;
+    border-radius: 0;
+    font: inherit;
+}
+
+input {
+    flex: 1 1 220px;
+    background: #fffdf0;
+}
+
+button {
+    background: #e6a23c;
+    color: #2d241c;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #d47735;
+}
+
+ul {
+    padding: 0;
+    margin: 1.5rem 0 0;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem;
+    margin-bottom: 0.6rem;
+    background: #f8d98b;
+    border: 2px dashed #8f2d2d;
+}
+
+li button {
+    padding: 0.25rem 0.6rem;
+    background: #d95d39;
+}
+
+.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}

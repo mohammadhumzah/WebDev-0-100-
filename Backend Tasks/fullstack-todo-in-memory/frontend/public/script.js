@@ -17,9 +17,15 @@ function addTODOToDom(wholeTodo){
     text.addEventListener('click', async()=>{
         const newState = !text.classList.contains('done')
 
-        const response = await axios.patch(`http://localhost:3000/todos/${wholeTodo.id}`, {completed: newState})
-        text.classList.toggle('done', response.data.completed)
+        try {
+             const response = await axios.patch(`http://localhost:3000/todos/${wholeTodo.id}`, {completed: newState})
+             text.classList.toggle('done', response.data.completed)          // element.classList.toggle(className, force) if completed is true add the class
 
+        } catch (error) {
+            console.error(error)
+            alert('Something went wrong')
+        }
+        
     })
 
     
@@ -45,10 +51,17 @@ function addTODOToDom(wholeTodo){
 
 // function to display all the existing todos
 async function getAlltodos(){
-    const response = await axios.get('http://localhost:3000/')
-    
 
-    response.data.forEach(todo => addTODOToDom(todo))
+    try {
+        const response = await axios.get('http://localhost:3000/')
+    
+        response.data.forEach(todo => addTODOToDom(todo))
+    } 
+    catch (error) {
+        console.error(error)
+        alert('Couldnt fetch todos')
+    }
+    
     
 
 }
@@ -57,24 +70,38 @@ async function getAlltodos(){
 addBttn.addEventListener('click', async () => {
 
     const value = inputVal.value 
-
-    const response = await axios.post('http://localhost:3000/todos', {value})
     
-    const todo = response.data.todo
+    try {
+         const response = await axios.post('http://localhost:3000/todos', {value})
     
-    addTODOToDom(todo)
+         const todo = response.data.todo
+    
+         addTODOToDom(todo)
 
-    inputVal.value = ''
+         inputVal.value = ''
+    } 
+    catch (error) {
+         console.error(error)
+         alert('Could not create that')
+    }
+    
     
 })
 
 // function to show the result of the searched todo
 searchBttn.addEventListener('click', async() => {
     const q = searchInput.value.trim()
-    const response = await axios.get('http://localhost:3000/todos/search', {params: {q}})     // params: val builds the query string
 
-    todoItemsContainer.innerHTML = ''
-    response.data.forEach(todo => addTODOToDom(todo))               // goes over array of objects and send 1 object at a time to addtodom
+    try {
+        const response = await axios.get('http://localhost:3000/todos/search', {params: {q}})     // params: val builds the query string
+
+        todoItemsContainer.innerHTML = ''
+        response.data.forEach(todo => addTODOToDom(todo))               // goes over array of objects and send 1 object at a time to addtodom
+        
+    } catch (error) {
+        console.error(error)
+        alert('Search Failed')
+    }
     
 
 })
@@ -82,10 +109,11 @@ searchBttn.addEventListener('click', async() => {
 // function to delete all the todos
 delAll.addEventListener('click', async() => {
 
-    const response = await axios.delete('http://localhost:3000/todos')
-    
-    const items = document.querySelectorAll('li')
-    for(let i of items){
+    try {
+         const response = await axios.delete('http://localhost:3000/todos')
+
+        const items = document.querySelectorAll('li')
+        for(let i of items){
         i.remove()
     }
     todoItemsContainer.innerText = response.data.message
@@ -93,28 +121,15 @@ delAll.addEventListener('click', async() => {
         todoItemsContainer.innerText = ''
     }, 1000)
 
+    } 
+    catch (error) {
+        console.error(error)
+        alert('Could not delete all todos')
+    }
 })
 
 
 getAlltodos()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -143,7 +158,7 @@ function addTODOToDom(wholeTodo){
     li.textContent = wholeTodo.description
 
     
-    li.appendChild(createdelbutton(wholeTodo.id,li))
+    li.appendChild(createdelbutton(wholeTodo.id,li),text)
 
     todoItemsContainer.appendChild(li)
 }

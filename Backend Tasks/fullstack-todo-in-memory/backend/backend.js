@@ -39,6 +39,10 @@ app.patch('/todos/:id', (req,res) => {
     const {description,completed} = req.body
     
     const todo = todos.find(i => i.id === id)
+    if(!todo){
+        return res.status(404).json({error: 'could not find the todo'})
+    }
+    
     // if description is sent and that needs to be changed
     if(description !== undefined){
        const trimmed = description?.trim()
