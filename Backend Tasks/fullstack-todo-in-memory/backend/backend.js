@@ -13,7 +13,6 @@ app.get('/', (req,res) => {
 })
 
 
-
 app.post('/todos', (req,res) => {
     const value = req.body.value?.trim()
 
@@ -34,6 +33,22 @@ app.post('/todos', (req,res) => {
 })
 
 
+app.put('/todos/:id', (req,res) => {
+    const id = req.params.id
+    const task = req.body.description
+    const todo = todos.find(i => i.id === id)
+
+    todo = {id: id, description:task}
+    todos.push(todo)
+
+    res.status(404).json({message: 'updated successfully',
+                          updatedTodo: todo
+    })
+
+    
+})
+
+
 app.delete('/todos/:id', (req,res) => {
     const id = req.params.id
     const index = todos.findIndex(i => i.id === id)
@@ -45,6 +60,24 @@ app.delete('/todos/:id', (req,res) => {
     todos.splice(index,1)
     res.status(200).json({message: 'deleted successfully'})
 
+})
+
+
+app.get('/todos/search', (req,res) => {
+    const {q} = req.query
+    if(!q){
+        return res.status(404).json({error: 'query parameters missing'})
+    } 
+
+    // const todo = todos.filter(t => t.description.toLowerCase() === q.toLowerCase())     exact match
+    const todo = todos.filter(t => t.description.toLowerCase().includes(q.toLowerCase()))
+
+    res.status(200).json(todo)
+})
+
+app.delete('/todos', (req,res) => {
+    todos = []
+    res.json({message: 'Cleared all successfully'})
 })
 
 

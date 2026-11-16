@@ -1,6 +1,11 @@
 const inputVal = document.getElementById('todo-input')
 const addBttn = document.getElementById('add-btn')
 const todoItemsContainer = document.getElementById('todo-items-container')
+const searchBttn = document.getElementById('search-bttn')
+const searchInput = document.getElementById('search-input')
+const delAll = document.getElementById('delete-all')
+
+
 
 function addTODOToDom(wholeTodo){
     const li = document.createElement('li')
@@ -52,7 +57,61 @@ addBttn.addEventListener('click', async () => {
 })
 
 
+searchBttn.addEventListener('click', async() => {
+    const q = searchInput.value.trim()
+    const response = await axios.get('http://localhost:3000/todos/search', {params: {q}})     // params: val builds the query string
+
+    todoItemsContainer.innerHTML = ''
+    response.data.forEach(todo => addTODOToDom(todo))               // goes over array of objects and send 1 object at a time to addtodom
+    
+
+})
+
+
+async function updateTodo(wholeTodo){
+
+    const response = await axios.put(`http://localhost:3000/todos/${wholeTodo.id}`,{description: 'Buy milk'})
+    alert(`${response.data.message}`)
+}
+
+
+delAll.addEventListener('click', async() => {
+
+    const response = await axios.delete('http://localhost:3000/todos')
+    
+    const items = document.querySelectorAll('li')
+    for(let i of items){
+        i.remove()
+    }
+    todoItemsContainer.innerText = response.data.message
+    setTimeout(() => {
+        todoItemsContainer.innerText = ''
+    }, 1000)
+
+})
+
 getAlltodos()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
