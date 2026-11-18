@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser"
 
 //Importing all routes
 
-import userRoutes from "./routes/user_routes.js"  //used default keyword so was able to rename routes to userRoutes
+import userRoutes from "./routes/user_routes.js"  //used default keyword so was able to rename router to userRoutes
 
 
 const app = express()
