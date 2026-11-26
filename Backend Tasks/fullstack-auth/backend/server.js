@@ -1,8 +1,10 @@
 import express from 'express'
-import jsonwebtoken from  'jsonwebtoken'
+import jwt from  'jsonwebtoken'
+import cors from 'cors'
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 const users = []
 const JWT_SECRET = 'ssshhh'
@@ -10,11 +12,21 @@ const JWT_SECRET = 'ssshhh'
 //Middleware Auth
 function auth(req,res,next){
     const tok = req.headers.authorization
-    try {
-        
-    } catch (error) {
-        
+
+    if(tok){
+      try {
+        const payload = jwt.verify(tok, JWT_SECRET)
+        req.user = payload
+        console.log(req.user)
+        next()
+    } 
+    catch (error) {
+        return res.status(404).json({error: error.message})
     }
+    }else{
+        return res.json({error: 'Unauthorized'})
+    }
+    
 }
 
 // Controllers
@@ -46,6 +58,17 @@ app.post('/signin', function(req,res){
     }
 })
 
-app.get('/me', function (req,res){
+app.get('/me', auth, function (req,res){
+    const user = users.find(u => u.username === req.user.username)
+    console.log(user)
+    res.json({
+        username: user.username,
+        password: user.password
+    })
+})
 
+
+
+app.listen(3000,()=>{
+    console.log('app listenin at http://localhost:3000')
 })
