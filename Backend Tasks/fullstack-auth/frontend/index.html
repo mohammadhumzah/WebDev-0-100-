@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+     <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+    <title>Authentication Application</title>
+</head>
+<body>
+    
+    <div class="main">
+        <label for="signup">Signup</label>
+        <input id="signup" type="email" placeholder="Enter your email" >
+        <input id="sup" type="password" placeholder="Enter your password" >
+
+        <button id="signup-butt">Submit</button>
+    </div>
+
+    <div class="sec-main">
+        <label for="signin">Signin</label>
+        <input id="signin" type="email" placeholder="Enter your email" >
+        <input id="sip" type="password" placeholder="Enter your password" >
+
+        <button id="signin-butt">Submit</button>
+        
+    </div>
+
+    <div>
+        <p><b>User Information</b></p>
+
+        <ul id="user-items-container">
+        </ul>
+    </div>
+
+    <div>
+        <button id="logout-butt">Logout</button>
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

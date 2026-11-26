@@ -14,13 +14,12 @@ const JWT_SECRET = 'sshhh'
 async function auth(req,res,next){
     console.log('------------CONTROL REACHED HERE------')
     const tok = req.headers.authorization
-    console.log(tok)
 
    if(tok){
     try {
         const payload = jwt.verify(tok, JWT_SECRET) 
+        console.log(payload)
         req.user = payload
-        console.log(req.user)
         next()           
     } catch (error) {
         return res.status(401).json({ error: error.message })
