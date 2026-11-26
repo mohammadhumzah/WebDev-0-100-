@@ -54,12 +54,18 @@ async function signinHandler(req,res,next){
 async function getMe(req,res,next) {
     const tok = req.headers.authorization
     console.log(tok)
-    const userDetails = jwt.verify(tok, JWT_SECRET)         // sends decoded payload generally as JS object
+    let userDetails
 
-   
 
-    const user = users.find(u => u.username === userDetails.username)
-    console.log(user)
+    try {
+         userDetails = jwt.verify(tok, JWT_SECRET)                             // sends decoded payload generally as JS object    
+    } catch (error) {
+        return res.json({error:'couldnt verify'})
+    }
+
+
+    const user = users.find(u => u.username === userDetails.username) 
+    console.log(user)          
     if(!user){
         return res.status(404).json({error: 'Couldnt find user'})
     }
@@ -77,6 +83,9 @@ app.post('/signin', signinHandler)
 
 app.get('/me', getMe)
 
+app.use((req,res)=>{
+    return res.send('Nigga this doesnt match anything we have')
+})
 
 app.listen(3000, ()=>{
     console.log('App listening at port http://localhost:3000')
