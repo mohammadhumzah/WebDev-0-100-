@@ -1,10 +1,12 @@
 import express from 'express'
 import jwt from  'jsonwebtoken'
-import cors from 'cors'
+import path from 'path'
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(express.static(path.join(import.meta.dirname, '../frontend')))
+console.log(path.join(import.meta.dirname, '../frontend'))
+
 
 const users = []
 const JWT_SECRET = 'ssshhh'
