@@ -10,6 +10,9 @@ const signupButt = document.getElementById('signup-butt')
 const signinButt = document.getElementById('signin-butt')
 const logoutDiv = document.getElementById('logout')
 
+ const signupOptions = document.querySelector('.main')
+ const signinOptions = document.querySelector('.sec-main')
+
 
 signupButt.addEventListener('click', async function(){
     const username = signupEmail.value.trim()
@@ -34,8 +37,9 @@ signinButt.addEventListener('click', async function(){
     try {
         const response = await axios.post('http://localhost:3000/signin', {username,password})
         console.log(response.data)
-         loginEmail.value = ''
-         loginPass.value = ''
+
+        signupOptions.style.display = 'none'
+        signinOptions.style.display = 'none'
         
         localStorage.setItem("token", response.data.token)
         getUserInformation()
@@ -68,14 +72,22 @@ async function getUserInformation(){
         logoutButt.innerText = 'Logout'
         logoutButt.addEventListener('click', async function(){
             localStorage.removeItem('token')
-            div.innerHTML = ''
+            div.remove()
+            logoutDiv.replaceChildren()
+            signupOptions.style.display = ''
+            signinOptions.style.display = ''
+
             })
 
         document.getElementById('userinfo').append(liUsername,liPass)
         div.after(logoutDiv)
-        logoutDiv.appendChild(logoutButt)
+        logoutDiv.replaceChildren(logoutButt)
+
+         signupOptions.style.display = 'none'
+         signinOptions.style.display = 'none'
     }
      catch (error) {
+        console.log(error)
         localStorage.removeItem('token')
     }
    
