@@ -1,3 +1,4 @@
+import { error } from 'console'
 import express from 'express'
 import jwt from  'jsonwebtoken'
 import path from 'path'
@@ -5,7 +6,6 @@ import path from 'path'
 const app = express()
 app.use(express.json())
 app.use(express.static(path.join(import.meta.dirname, '../frontend')))
-console.log(path.join(import.meta.dirname, '../frontend'))
 
 
 const users = []
@@ -33,13 +33,18 @@ function auth(req,res,next){
 
 // Controllers
 app.post('/signup', function(req,res){
-    const username = req.body.username
-    const password = req.body.password
+    const username = req.body.username 
+    const password = req.body.password 
+
+    if(!username || !password){
+        return res.status(404).json({error: 'Invalid username or password'})
+    }
 
     users.push({
         username:username,
         password: password
     })
+    console.log('users=' , users)
 
     res.status(200).json({
         message: 'Signed Up Successfully'
@@ -50,6 +55,10 @@ app.post('/signin', function(req,res){
     const username = req.body.username
     const password = req.body.password
 
+    if(!username || !password){
+        return res.status(404).json({error: 'Invalid username or password'})
+    }
+
     const user = users.find(u => u.username === username && u.password === password)
     if(user){
         const tok = jwt.sign({username: user.username}, JWT_SECRET)
@@ -58,11 +67,17 @@ app.post('/signin', function(req,res){
             token: tok
         })
     }
+    else{
+        return res.status(404).json({error:'User doesnt exist'})
+    }
 })
 
 app.get('/me', auth, function (req,res){
     const user = users.find(u => u.username === req.user.username)
-    console.log(user)
+    console.log("user in /me =" , user)
+    if(!user){
+        return res.status(404).json({error: 'user not found'})
+    }
     res.json({
         username: user.username,
         password: user.password
